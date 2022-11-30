@@ -1,0 +1,4 @@
+keyStore: store
+keyPath: react-sprint14/react-routes.key
+secretName: KEY_TESTS
+illegalChanges: []
