@@ -18,6 +18,7 @@ export default function App() {
         </div>
       </div>
       <Routes>
+        <Route path='subtask1' element={<Subtask1 />} />
         <Route path='subtask1/:param' element={<Subtask1 />} />
       </Routes>
     </>
