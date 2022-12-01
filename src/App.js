@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import { Subtask1Param } from './components/Subtask1Param';
 import { Subtask1 } from './components/Subtask1';
+import { Subtask2 } from './components/Subtask2';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
       <Routes>
         <Route path='/subtask1' element={<Subtask1 />} />
         <Route path='/subtask1/:param' element={<Subtask1Param />} />
+        <Route path='/subtask2' element={<Subtask2 />} />
       </Routes>
     </div>
   );
