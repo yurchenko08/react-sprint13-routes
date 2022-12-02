@@ -1,22 +1,10 @@
 import { useLocation } from 'react-router-dom';
 
 function Subtask2() {
-  const queryString = require('query-string');
-  const location = useLocation();
-  console.log(location);
-  const parsed = queryString.parse(location.search);
-  console.log(parsed);
-  function res() {
-    const str = [];
-    for (let key in parsed) {
-      const keyInd = key;
-      const valueKeyInd = parsed[key];
-      str.push(` ${keyInd}=${valueKeyInd}`);
-    }
-    return str;
-  }
+  const { search } = useLocation();
+  const modifyStr = (search) => search.substr(1).split('&').join(', ');
 
-  return <div>Subtask2, query parameters:{`${res(parsed)}`}</div>;
+  return <div>Subtask2, query parameters: {`${modifyStr(search)}`}</div>;
 }
 
 export default Subtask2;
