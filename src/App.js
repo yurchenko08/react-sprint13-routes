@@ -9,7 +9,6 @@ import { Subtask3 } from './components/Subtask3';
 export default function App() {
   const digit = { odd: '/subtask3', even: '/' };
   const [value, setValue] = useState('');
-  console.log(value);
   return (
     <div className='App'>
       <h1>React Marathon</h1>
@@ -29,8 +28,9 @@ export default function App() {
         <input type='checkbox'></input>
       </div>
       <Routes>
-        <Route path='subtask1' element={<Subtask1 />} />
-        <Route path='/subtask1/:param' element={<Subtask1Param />} />
+        <Route path='/subtask1' element={<Subtask1 />}>
+          <Route path=':param' element={<Subtask1 />} />
+        </Route>
         <Route path='/subtask2' element={<Subtask2 />} />
         <Route path='/subtask3' element={<Subtask3 />} />
       </Routes>
