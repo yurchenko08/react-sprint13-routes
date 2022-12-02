@@ -36,7 +36,7 @@ export default function App() {
       </div>
       <Routes>
         <Route path='/subtask1' element={<Subtask1 />}>
-          <Route path=':param' element={<Subtask1 />} />
+          <Route path=':paramValue' element={<ParamNum />} />
         </Route>
         <Route path='/subtask2' element={<Subtask2 />} />
         {checkDigit && <Route path={link} element={<Subtask3 />}></Route>}
