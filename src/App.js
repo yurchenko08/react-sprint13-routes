@@ -1,22 +1,20 @@
-import { Routes, Route, Link, Outlet, useNavigate } from 'react-router-dom';
-import Subtask1 from './components/Subtask1/Subtask1';
-import Subtask2 from './components/Subtask2/Subtask2';
-import ParamNum from './components/Subtask1/ParamNum';
-import Subtask3 from './components/Subtask3/Subtask3';
-import NotFound from './components/NotFound/NotFound';
+import React, { useState } from 'react';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './App.css';
-import { useState } from 'react';
+import Subtask1 from './components/Subtask1/Subtask1';
+import Subtask2 from './components//Subtask2/Subtask2';
+import Subtask3 from './components/Subtask3/Subtask3';
 import Subtask4 from './components/Subtask4/Subtask4';
 
 export default function App() {
-  //subtask3
-  const [inputValue, setInputValue] = useState('');
-  const checkInputValue =
-    inputValue % 2 === 0 && inputValue !== 'undefined' ? false : true;
-  const link = checkInputValue ? 'subtask3' : '/';
-  const guard = checkInputValue ? <Subtask3 /> : <Outlet />;
-
-  //subtask4
+  const [checkDigit, setCheckdigit] = useState(false);
+  const [link, setLink] = useState('');
+  const handleInput = (e) => {
+    if (e.target.value % 2 === 1) {
+      setCheckdigit(true);
+      setLink('/subtask3');
+    } else setCheckdigit(false);
+  };
   const navigate = useNavigate();
   const handleCheckboxChange = (e) => {
     if (e.target.checked) {
@@ -25,31 +23,24 @@ export default function App() {
       navigate('');
     }
   };
-
   return (
-    <div className="App">
+    <div className='App'>
       <h1>React Marathon</h1>
       <h2>The topic 'Routes'</h2>
       <Link to={link}>Show protected information if</Link>
       <span>&nbsp;</span>
-      <input
-        size="5"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-      ></input>{' '}
-      is odd
-      <div className="mainClass">
+      <input onChange={handleInput} size='5'></input> is odd
+      <div className='mainClass'>
         Go to the component programmatically, by checking the box:{' '}
-        <input type="checkbox" onChange={handleCheckboxChange}></input>
+        <input type='checkbox' onChange={handleCheckboxChange}></input>
       </div>
       <Routes>
-        <Route path="/subtask1" element={<Subtask1 />}>
-          <Route path=":paramValue" element={<ParamNum />} />
+        <Route path='/subtask1' element={<Subtask1 />}>
+          <Route path=':param' element={<Subtask1 />} />
         </Route>
-        <Route path="subtask2" element={<Subtask2 />} />
-        <Route path={link} element={guard} />
-        <Route path="subtask4" element={<Subtask4 />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path='/subtask2' element={<Subtask2 />} />
+        {checkDigit && <Route path={link} element={<Subtask3 />}></Route>}
+        <Route path='subtask4' element={<Subtask4 />} />
       </Routes>
     </div>
   );
