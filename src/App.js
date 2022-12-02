@@ -5,6 +5,7 @@ import Subtask1 from './components/Subtask1/Subtask1';
 import Subtask2 from './components//Subtask2/Subtask2';
 import Subtask3 from './components/Subtask3/Subtask3';
 import Subtask4 from './components/Subtask4/Subtask4';
+import ParamNum from './components/Subtask1/ParamNum';
 
 export default function App() {
   const [checkDigit, setCheckdigit] = useState(false);
